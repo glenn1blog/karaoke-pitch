@@ -1,19 +1,19 @@
 # React + TypeScript + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+這個範本提供最小化的設定，讓 React 能在 Vite 中啟動，並附有 HMR 與基本的 ESLint 規則。
 
-Currently, two official plugins are available:
+官方目前提供兩個 React 插件：
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) 使用 [Babel](https://babeljs.io/)（若搭配 [rolldown-vite](https://vite.dev/guide/rolldown) 則可使用 [oxc](https://oxc.rs)）支援 Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) 使用 [SWC](https://swc.rs/) 支援 Fast Refresh
 
 ## React Compiler
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+此範本預設未啟用 React Compiler，以避免影響開發與建置效能。若需要，可參考[官方文件](https://react.dev/learn/react-compiler/installation)自行加入。
 
-## Expanding the ESLint configuration
+## 擴充 ESLint 設定
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+若是開發正式環境的應用程式，建議啟用 type-aware 的 lint 規則，設定範例如下：
 
 ```js
 export default defineConfig([
@@ -21,29 +21,29 @@ export default defineConfig([
   {
     files: ['**/*.{ts,tsx}'],
     extends: [
-      // Other configs...
+      // 其他共用設定...
 
-      // Remove tseslint.configs.recommended and replace with this
+      // 將 tseslint.configs.recommended 換成下列設定
       tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
+      // 若希望更嚴格，可改用這個
       tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
+      // 若需要風格相關的規則，可加入這個
       tseslint.configs.stylisticTypeChecked,
 
-      // Other configs...
+      // 其他共用設定...
     ],
     languageOptions: {
       parserOptions: {
         project: ['./tsconfig.node.json', './tsconfig.app.json'],
         tsconfigRootDir: import.meta.dirname,
       },
-      // other options...
+      // 其他選項...
     },
   },
 ])
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+也可以安裝 [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) 與 [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) 來啟用更完整的 React 相關規則：
 
 ```js
 // eslint.config.js
@@ -55,10 +55,10 @@ export default defineConfig([
   {
     files: ['**/*.{ts,tsx}'],
     extends: [
-      // Other configs...
-      // Enable lint rules for React
+      // 其他共用設定...
+      // React 規則
       reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
+      // React DOM 規則
       reactDom.configs.recommended,
     ],
     languageOptions: {
@@ -66,7 +66,7 @@ export default defineConfig([
         project: ['./tsconfig.node.json', './tsconfig.app.json'],
         tsconfigRootDir: import.meta.dirname,
       },
-      // other options...
+      // 其他選項...
     },
   },
 ])
